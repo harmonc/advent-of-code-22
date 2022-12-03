@@ -1,0 +1,47 @@
+<html>
+    <head>
+    <link rel="stylesheet" href="../style.css">
+    </head>
+<body>
+    <a href="../index.html">[Back to Calendar]</a>
+    <br>
+    <h1>Day 1</h1>
+    <br>
+    <a href="https://adventofcode.com/2022/day/1">[Link to Puzzle]</a>
+    <div>
+    <pre>
+    <code class='solution'>function process(str){
+    let elves = str.split('\n\n')
+    let totals = []
+    
+    //Part One
+    elves.forEach(element => {
+        let nums = element.split('\n')
+        let total = 0
+        nums.forEach(n => total += parseInt(n))
+        totals.push(total)
+    });
+    let result = Math.max(...totals)
+
+    //Part Two
+    let top_n = []
+    let n = 3
+    for(let i = 0; i < n; i++){
+        let max = Math.max(...totals)
+        totals = totals.filter(x=>x!==max)
+        top_n.push(max)
+    }
+    let result2 = top_n.reduce((prev,current)=>prev += current)
+    logResults(result,result2)
+}</code>
+    </pre>
+</div>
+    <textarea name="data" id='data' autocomplete="off" cols="40" rows="5"></textarea>
+    <br>
+    <input type="submit" id='submit' value="[Submit]">
+    <p id='result'></p>
+    <script src="day1.js" type="text/javascript"></script>
+    <script src="../baseDay.js" type="text/javascript"></script>
+
+</body>
+</html>
